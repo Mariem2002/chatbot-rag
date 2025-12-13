@@ -16,13 +16,20 @@ client = genai.Client(api_key=GEMINI_API_KEY)
 EMBEDDING_MODEL = "text-embedding-004"
 EMBEDDING_DIM = 768
 
-# Chaîne de connexion 
+# Récupérer les paramètres depuis l'environnement
+DB_NAME = os.getenv("DB_NAME")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_HOST = os.getenv("DB_HOST")
+DB_PORT = os.getenv("DB_PORT")
+
+# Construire la chaîne de connexion
 DB_CONN_STR = (
-    f"host=localhost "
-    f"port=5433 "  
-    f"dbname=postgres "
-    f"user=postgres "
-    f"password=1234"  
+    f"host={DB_HOST} "
+    f"port={DB_PORT} "
+    f"dbname={DB_NAME} "
+    f"user={DB_USER} "
+    f"password={DB_PASSWORD}"
 )
 
 def create_chunks(file_path: str) -> list[str]:
@@ -57,9 +64,9 @@ def save_embeddings(chunks: list[str]):
             # Test connexion + extension
             try:
                 cur.execute("CREATE EXTENSION IF NOT EXISTS vector")
-                print("✅ Extension pgvector activée.")
+                print(" Extension pgvector activée.")
             except Exception as e:
-                print(f"❌ Erreur extension: {e}")
+                print(f"Erreur extension: {e}")
                 print("Installe pgvector d'abord (voir instructions).")
                 return
 
@@ -72,7 +79,7 @@ def save_embeddings(chunks: list[str]):
                     embedding VECTOR({EMBEDDING_DIM})
                 )
             """)
-            print(f"✅ Table créée avec VECTOR({EMBEDDING_DIM}).")
+            print(f"Table créée avec VECTOR({EMBEDDING_DIM}).")
 
             # Insertion
             for i, chunk in enumerate(chunks):
@@ -107,7 +114,7 @@ def search_similar(query: str, limit: int = 5):
 
 # ==================== LANCEMENT ====================
 if __name__ == "__main__":
-    print("🚀 Démarrage RAG avec pgvector + Gemini\n")
+    print(" Démarrage RAG avec pgvector + Gemini\n")
 
     # Chargement
     chunks = create_chunks("data/conversation.txt")
@@ -119,7 +126,7 @@ if __name__ == "__main__":
     save_embeddings(chunks)
 
     # Test interactif
-    print("\n🔍 Mode recherche : Pose une question (ou 'quit')")
+    print("\n Mode recherche : Pose une question (ou 'quit')")
     while True:
         query = input("\nTa question : ").strip()
         if query.lower() in ["quit", "exit", "q"]:
@@ -133,4 +140,4 @@ if __name__ == "__main__":
         else:
             print("Aucun résultat.")
     
-    print("\n✅ Terminé !")
+    print("\n Terminé !")
