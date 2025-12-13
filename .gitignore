@@ -1,6 +1,5 @@
 # Variables d'environnement (très important !)
-.env
-.env.local
+notebook/.env
 
 # Python caches
 __pycache__/
