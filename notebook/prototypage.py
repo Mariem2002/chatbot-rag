@@ -128,8 +128,8 @@ if __name__ == "__main__":
         if results:
             print(f"\nTop résultats pour « {query } » :\n")
             for i, (id_, text, dist) in enumerate(results, 1):
-                preview = text[:100] + "..." if len(text) > 100 else text
-                print(f"{i}. [dist={dist:.4f}] {preview}")
+          
+                print(f"{i}. [dist={dist:.4f}] {text}")
         else:
             print("Aucun résultat.")
     

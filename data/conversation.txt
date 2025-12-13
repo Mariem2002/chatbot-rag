@@ -1,12 +1,109 @@
-Bonjour, je m'appelle Mariem et je travaille sur un projet de chatbot RAG avec pgvector et Gemini.
-Mon objectif est de créer un assistant intelligent capable de répondre à des questions sur mes documents.
-J'utilise PostgreSQL 15 dans un container Docker avec l'extension pgvector 0.8.1.
-Les embeddings sont générés avec le modèle text-embedding-004 de Google qui fait 768 dimensions.
-J'ai choisi la distance cosinus et un index HNSW pour accélérer les recherches.
-Le projet est codé en Python avec psycopg3 et google-generativeai.
-Tout tourne en local sur mon PC Windows, zéro coût, zéro latence.
-J'ai déjà réussi à insérer 500 chunks et à faire des recherches sémantiques en moins de 20 ms.
-La prochaine étape sera d'intégrer un LLM pour générer les réponses finales.
-Je pense utiliser Gemini 1.5 Flash ou Llama 3 8B en local avec Ollama.
-Le projet final sera un chatbot qui connaît parfaitement mes notes de cours et mes projets.
-C'est super excitant de voir que tout fonctionne déjà avec seulement quelques lignes de code !
+La télémédecine permet aux patients de consulter un médecin à distance via des plateformes vidéo sécurisées.
+Les objets connectés tels que les montres intelligentes suivent la fréquence cardiaque en temps réel.
+Les dossiers médicaux électroniques améliorent la coordination entre les professionnels de santé.
+L’intelligence artificielle aide à diagnostiquer des maladies plus rapidement grâce à l’analyse d’images médicales.
+Les applications de suivi du sommeil permettent de détecter des troubles du sommeil précoces.
+Les chatbots de santé offrent des conseils personnalisés aux patients 24h/24.
+La cybersécurité des données de santé est cruciale pour protéger la vie privée des patients.
+Les plateformes de téléconsultation réduisent les délais d’attente pour obtenir un rendez-vous.
+L’analyse des big data médicales permet de prédire les épidémies et d’améliorer la prévention.
+Les capteurs de pression artérielle connectés facilitent le suivi des patients hypertendus.
+
+Les systèmes d’alerte médicale automatisés préviennent rapidement les urgences cardiaques.
+La réalité augmentée est utilisée pour la formation des chirurgiens et les simulations médicales.
+Les bracelets connectés suivent l’activité physique quotidienne et motivent à rester actif.
+Les algorithmes d’IA peuvent détecter le cancer de la peau à partir de photos.
+Les plateformes de partage de données médicales favorisent la recherche collaborative.
+Les applications de nutrition aident à suivre l’apport calorique et les régimes personnalisés.
+La télésurveillance des patients chroniques réduit les hospitalisations inutiles.
+Les implants intelligents permettent de suivre en continu la santé cardiovasculaire.
+Les systèmes de gestion hospitalière automatisent les rendez-vous et les dossiers patients.
+Les objets connectés pour diabétiques mesurent le glucose et envoient des alertes.
+
+L’intelligence artificielle facilite la lecture des radiographies et IRM.
+Les plateformes de santé mentale en ligne offrent des thérapies virtuelles.
+La blockchain est utilisée pour sécuriser les dossiers médicaux et les consentements patients.
+Les applications de méditation aident à réduire le stress et l’anxiété.
+Les assistants vocaux peuvent rappeler aux patients de prendre leurs médicaments.
+L’IoT médical permet la collecte de données en temps réel pour les études cliniques.
+Les lunettes intelligentes aident les patients malvoyants à se déplacer en sécurité.
+Les capteurs de sommeil connectés permettent de suivre la qualité du repos.
+L’analyse prédictive identifie les patients à risque de complications.
+La télérééducation permet aux patients de suivre des exercices supervisés à distance.
+
+Les applications mobiles aident les femmes à suivre leur cycle menstruel et la fertilité.
+Les robots chirurgicaux assistés par IA améliorent la précision des interventions.
+Les données de santé anonymisées contribuent à la recherche sur les maladies rares.
+Les plateformes de coordination des soins améliorent la communication entre médecins.
+La télédermatologie permet un diagnostic rapide à partir de photos.
+Les capteurs de posture connectés préviennent les troubles musculosquelettiques.
+Les systèmes de suivi des médicaments alertent en cas d’oubli de traitement.
+Les applications de suivi de l’hydratation encouragent une consommation adéquate d’eau.
+Les algorithmes de traitement du langage naturel analysent les notes médicales pour extraire des informations clés.
+Les réseaux de santé connectés facilitent la gestion des crises sanitaires locales.
+
+Les plateformes de coaching santé personnalisent les plans d’exercice et de nutrition.
+Les outils de télépsychiatrie permettent des consultations confidentielles en ligne.
+Les dispositifs portables surveillent les niveaux d’oxygène dans le sang.
+L’analyse des données génomiques permet des traitements personnalisés pour certains cancers.
+Les capteurs de température corporelle connectés aident à détecter les infections précoces.
+Les chatbots médicaux guident les patients vers le bon spécialiste en fonction des symptômes.
+Les capteurs intelligents pour sportifs mesurent la performance et préviennent les blessures.
+Les dossiers médicaux partagés en ligne permettent une meilleure coordination inter-hôpitaux.
+Les outils de télésurveillance respiratoire aident les patients asthmatiques à mieux gérer leurs crises.
+Les applications de rappel de vaccination assurent un suivi précis des enfants et adultes.
+
+Les plateformes de santé communautaire connectent les patients atteints de maladies rares.
+L’analyse prédictive du diabète permet d’adapter les traitements en fonction du risque individuel.
+Les applications de suivi de l’hypertension facilitent la gestion des traitements médicamenteux.
+Les lunettes de réalité virtuelle aident à la rééducation des patients neurologiques.
+Les capteurs intelligents détectent les chutes chez les personnes âgées.
+Les outils d’e-learning médical améliorent la formation continue des professionnels de santé.
+Les assistants IA analysent les dossiers pour identifier les erreurs de prescription.
+Les dispositifs connectés pour insuffisants cardiaques préviennent les complications graves.
+Les applications de suivi des symptômes permettent de mieux comprendre l’évolution des maladies chroniques.
+Les plateformes de télésanté mentale proposent des programmes personnalisés de thérapie cognitive.
+
+La télémédecine rurale réduit les inégalités d’accès aux soins.
+Les applications mobiles de gestion du stress aident à prévenir le burn-out.
+Les dispositifs de suivi de l’activité physique adaptés aux seniors encouragent le mouvement quotidien.
+Les systèmes de surveillance des médicaments détectent les interactions dangereuses.
+Les outils d’analyse prédictive en oncologie améliorent les plans de traitement personnalisés.
+Les applications de suivi de la grossesse fournissent des conseils santé adaptés à chaque trimestre.
+Les capteurs intelligents pour sportifs analysent le sommeil et la récupération.
+Les plateformes de suivi des maladies infectieuses facilitent la détection des épidémies.
+Les applications de suivi de la nutrition permettent de planifier des régimes équilibrés.
+Les systèmes de sécurité pour données médicales utilisent le cryptage pour protéger la confidentialité.
+
+Les applications de télésanté permettent des consultations rapides pour des symptômes bénins.
+Les outils d’intelligence artificielle analysent les images radiologiques pour détecter les anomalies.
+Les dispositifs de suivi du rythme cardiaque aident à prévenir les arythmies graves.
+Les plateformes de santé connectée facilitent l’accès aux spécialistes éloignés.
+Les applications de coaching mental proposent des exercices quotidiens de méditation.
+Les objets connectés permettent de mesurer la glycémie sans piqûres répétées.
+Les capteurs intelligents surveillent la qualité de l’air pour prévenir les allergies.
+Les applications de suivi des patients chroniques améliorent l’observance des traitements.
+Les systèmes d’alerte précoce pour maladies infectieuses détectent les foyers potentiels.
+Les outils de téléréadaptation offrent des programmes de physiothérapie à distance.
+
+Les plateformes de partage des données cliniques accélèrent la recherche médicale.
+Les applications mobiles de suivi du sommeil aident à améliorer les habitudes de repos.
+Les systèmes de télésurveillance cardiaque alertent les médecins en cas d’anomalie.
+Les outils d’IA en dermatologie aident au diagnostic précoce du mélanome.
+Les dispositifs portables de suivi de l’activité physique motivent les utilisateurs à rester actifs.
+Les plateformes de santé mentale en ligne permettent de suivre l’évolution des thérapies.
+Les applications de suivi de l’alimentation aident à prévenir les carences nutritionnelles.
+Les outils d’IA pour radiologie permettent de détecter des fractures invisibles à l’œil nu.
+Les capteurs intelligents surveillent la température corporelle en continu.
+Les plateformes de télémédecine permettent de suivre les patients après une hospitalisation.
+
+Les dispositifs connectés pour patients diabétiques alertent en cas de variation importante de glycémie.
+Les systèmes d’IA aident à identifier les risques d’hypertension chez les adolescents.
+Les applications de suivi des habitudes de vie favorisent la prévention des maladies chroniques.
+Les plateformes de télésanté offrent des conseils nutritionnels personnalisés.
+Les dispositifs connectés pour sportifs mesurent la fréquence cardiaque et la récupération.
+Les applications de suivi de l’hydratation préviennent la déshydratation chez les personnes âgées.
+Les outils de télémédecine permettent la consultation de spécialistes rares à distance.
+Les plateformes d’analyse des données génétiques facilitent les traitements personnalisés.
+Les systèmes de suivi intelligent pour insuffisants cardiaques préviennent les complications.
+Les applications de télésanté mentale proposent des programmes interactifs et adaptés.
