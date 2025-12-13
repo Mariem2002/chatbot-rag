@@ -10,26 +10,27 @@ Ce projet implémente un chatbot basé sur une architecture Retrieval-Augmented 
 
 ## Structure du projet
 .
-├── data/
-│   └── conversation.txt
-├── notebook/
-│   ├── prototypage.py
-│   └── .env
-├── src/
-│   ├── .gitignore
-│   └── requirements.txt
-└── README.md
+│   .gitignore
+│   README.md
+│
+├───data
+│       conversation.txt
+│
+└───src
+        .env
+        prototypage.py
+        requirements.txt
 
 ## Installation
 1. Créer et activer un environnement virtuel
 2. Installer les dépendances :
 pip install -r src/requirements.txt
-3. Ajouter la clé API dans notebook/.env :
+3. Ajouter la clé API dans src/.env :
 GEMINI_API_KEY=your_api_key_here
 4. Installer PostgreSQL et pgvector
 
 ## Exécution
-python notebook/prototypage.py
+python src/prototypage.py
 
 ## Principe de fonctionnement
 - Le texte est découpé en passages
