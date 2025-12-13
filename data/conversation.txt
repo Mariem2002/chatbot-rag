@@ -1,0 +1,12 @@
+Bonjour, je m'appelle Mariem et je travaille sur un projet de chatbot RAG avec pgvector et Gemini.
+Mon objectif est de créer un assistant intelligent capable de répondre à des questions sur mes documents.
+J'utilise PostgreSQL 15 dans un container Docker avec l'extension pgvector 0.8.1.
+Les embeddings sont générés avec le modèle text-embedding-004 de Google qui fait 768 dimensions.
+J'ai choisi la distance cosinus et un index HNSW pour accélérer les recherches.
+Le projet est codé en Python avec psycopg3 et google-generativeai.
+Tout tourne en local sur mon PC Windows, zéro coût, zéro latence.
+J'ai déjà réussi à insérer 500 chunks et à faire des recherches sémantiques en moins de 20 ms.
+La prochaine étape sera d'intégrer un LLM pour générer les réponses finales.
+Je pense utiliser Gemini 1.5 Flash ou Llama 3 8B en local avec Ollama.
+Le projet final sera un chatbot qui connaît parfaitement mes notes de cours et mes projets.
+C'est super excitant de voir que tout fonctionne déjà avec seulement quelques lignes de code !
