@@ -36,7 +36,7 @@ def create_chunks(file_path: str) -> list[str]:
     """Lit et nettoie les chunks du fichier."""
     try:
      
-        full_path = r"C:\Users\Mariem\Desktop\chatbot-Rag\Chatbot-RAG\data\conversation.txt"
+        full_path = r"data\conversation.txt"
         with open(full_path, "r", encoding="utf-8") as f:
             lines = f.readlines()
         chunks = [line.strip().removeprefix("    ") for line in lines 
@@ -111,6 +111,36 @@ def search_similar(query: str, limit: int = 5):
                 LIMIT %s
             """, (vec, limit))
             return cur.fetchall()
+def generate_answer(question: str, retrieved_chunks: list[tuple]) -> str:
+    """
+    Génère une réponse à partir des chunks récupérés (RAG).
+    """
+    # Construire le contexte
+    context = "\n\n".join(
+        [f"- {chunk}" for _, chunk, _ in retrieved_chunks]
+    )
+
+    prompt = f"""
+Tu es un assistant fiable.
+Réponds uniquement à partir du CONTEXTE ci-dessous.
+Si l'information n'est pas dans le contexte, dis clairement que tu ne sais pas.
+
+CONTEXTE :
+{context}
+
+QUESTION :
+{question}
+
+RÉPONSE :
+"""
+
+    response = client.models.generate_content(
+        model="gemini-2.5-flashy",
+        contents=prompt
+    )
+
+    return response.text
+
 
 # ==================== LANCEMENT ====================
 if __name__ == "__main__":
@@ -126,18 +156,24 @@ if __name__ == "__main__":
     save_embeddings(chunks)
 
     # Test interactif
-    print("\n Mode recherche : Pose une question (ou 'quit')")
+    print("\n Mode RAG : Pose une question (ou 'quit')")
     while True:
         query = input("\nTa question : ").strip()
         if query.lower() in ["quit", "exit", "q"]:
             break
+
         results = search_similar(query)
-        if results:
-            print(f"\nTop résultats pour « {query } » :\n")
-            for i, (id_, text, dist) in enumerate(results, 1):
-          
-                print(f"{i}. [dist={dist:.4f}] {text}")
-        else:
-            print("Aucun résultat.")
-    
-    print("\n Terminé !")
+
+        if not results:
+            print("Aucun contexte trouvé.")
+            continue
+
+        print("\n Contexte récupéré :\n")
+        for i, (_, text, dist) in enumerate(results, 1):
+            print(f"{i}. [dist={dist:.4f}] {text}")
+
+        # 🔹 GENERATION
+        answer = generate_answer(query, results)
+
+        print("\n Réponse générée (RAG) :\n")
+        print(answer)
